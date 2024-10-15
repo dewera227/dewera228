@@ -2,6 +2,17 @@
 #include <iostream>
 using namespace std;
 
+// Функция для проверки столкновений
+bool checkCollision(SDL_Rect rect1, SDL_Rect rect2) {
+    if (rect1.x + rect1.w > rect2.x &&
+        rect1.x < rect2.x + rect2.w &&
+        rect1.y + rect1.h > rect2.y &&
+        rect1.y < rect2.y + rect2.h) {
+        return true;
+    }
+    return false;
+}
+
 int main(int argc, char* argv[]) {
     // Инициализация SDL
     if (SDL_Init(SDL_INIT_VIDEO) < 0) {
@@ -40,8 +51,21 @@ int main(int argc, char* argv[]) {
     SDL_Texture* characterTexture = SDL_CreateTextureFromSurface(renderer, tempSurface);
     SDL_FreeSurface(tempSurface);
 
-    SDL_Rect characterRect = { 100, 100, 500, 500 }; // Положение и размер персонажа
+    SDL_Rect characterRect = { 100, 100, 20, 20 }; // Положение и размер персонажа
     const int speed = 1; // Скорость перемещения
+
+    // Загрузка изображения карты
+    SDL_Surface* mapSurface = SDL_LoadBMP("map.bmp");
+    if (!mapSurface) {
+        cout << "Ошибка загрузки изображения карты: " << SDL_GetError() << endl;
+        SDL_DestroyTexture(characterTexture);
+        SDL_DestroyRenderer(renderer);
+        SDL_DestroyWindow(window);
+        SDL_Quit();
+        return -1;
+    }
+    SDL_Texture* mapTexture = SDL_CreateTextureFromSurface(renderer, mapSurface);
+    SDL_FreeSurface(mapSurface);
 
     // Основной цикл игры
     bool isRunning = true;
@@ -54,41 +78,52 @@ int main(int argc, char* argv[]) {
                 isRunning = false;
             }
         }
-        int windowHeight = 800;
-        int windowWidht = 600;
+
+        // Получаем состояние клавиатуры
         const Uint8* keystate = SDL_GetKeyboardState(NULL);
+
+        // Сохраняем старое положение персонажа
+        SDL_Rect oldCharacterRect = characterRect;
+
+        // Обрабатываем нажатия клавиш для перемещения персонажа
         if (keystate[SDL_SCANCODE_W] && characterRect.y > 0) {
             characterRect.y -= speed;
+            if (checkCollision(characterRect, { 0, 0, 800, 600 })) {
+                characterRect.y = oldCharacterRect.y;  
+                }
         }
-        if (keystate[SDL_SCANCODE_S] && characterRect.y + characterRect.h < windowHeight) {
+        if (keystate[SDL_SCANCODE_S] && characterRect.y + characterRect.h < 600) {
             characterRect.y += speed;
+            if (checkCollision(characterRect, { 0, 0, 800, 600 })) {
+                characterRect.y = oldCharacterRect.y;
+            }
         }
         if (keystate[SDL_SCANCODE_A] && characterRect.x > 0) {
             characterRect.x -= speed;
+            if (checkCollision(characterRect, { 0, 0, 800, 600 })) {
+                characterRect.x = oldCharacterRect.x; 
+            }
         }
-        if (keystate[SDL_SCANCODE_D] && characterRect.x + characterRect.w < windowWidht) {
+        if (keystate[SDL_SCANCODE_D] && characterRect.x + characterRect.w < 800) {
             characterRect.x += speed;
+            if (checkCollision(characterRect, { 0, 0, 800, 600 })) {
+                characterRect.x = oldCharacterRect.x; 
+            }
         }
-            //if (event.type == SDL_KEYDOWN) {
-            //    switch (event.key.keysym.sym) {
-            //    case SDLK_UP:
-            //        characterRect.y -= speed;
-            //        break;
-            //    case SDLK_DOWN:
-            //        characterRect.y += speed;
-            //        break;
-            //    case SDLK_LEFT:
-            //        characterRect.x -= speed;
-            //        break;
-            //    case SDLK_RIGHT:
-            //        characterRect.x += speed;
-            //        break;
-            //    }
-            //}
+ 
+
+        // Проверяем столкновение с картой
+        if (checkCollision(characterRect, { 0, 0, 800, 600 })) {
+            // Если персонаж столкнулся с краем карты, возвращаем его в прежнее положение
+            characterRect = oldCharacterRect;
+        }
 
         // Очищаем экран
         SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255); // Черный фон
         SDL_RenderClear(renderer);
+
+        // Отрисовка карты
+        SDL_RenderCopy(renderer, mapTexture, NULL, NULL);
 
         // Отрисовка персонажа
         SDL_RenderCopy(renderer, characterTexture, NULL, &characterRect);
@@ -98,8 +133,8 @@ int main(int argc, char* argv[]) {
     }
 
     // Очищаем ресурсы
-    SDL_Delay(5000);
     SDL_DestroyTexture(characterTexture);
+    SDL_DestroyTexture(mapTexture);
     SDL_DestroyRenderer(renderer);
     SDL_DestroyWindow(window);
     SDL_Quit();
