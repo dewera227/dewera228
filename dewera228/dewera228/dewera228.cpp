@@ -2,44 +2,85 @@
 #include <iostream>
 using namespace std;
 
-// Функция для проверки столкновений
-bool checkCollision(SDL_Rect rect1, SDL_Rect rect2) {
-    if (rect1.x + rect1.w > rect2.x &&
-        rect1.x < rect2.x + rect2.w &&
-        rect1.y + rect1.h > rect2.y &&
-        rect1.y < rect2.y + rect2.h) {
-        return true;
+const int CELL_SIZE = 64; // Размер клетки лабиринта
+const int SCREEN_WIDTH = 640; // Ширина экрана
+const int SCREEN_HEIGHT = 640; // Высота экрана
+const int SPEED = 4; // Скорость персонажа
+
+// Определение лабиринта (1 - стена, 0 - проход, 2 - финиш)
+int maze[10][10] = {
+    {1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
+    {1, 0, 0, 0, 1, 0, 0, 0, 0, 1},
+    {1, 0, 1, 0, 1, 0, 1, 1, 0, 1},
+    {1, 0, 1, 0, 0, 0, 1, 0, 0, 1},
+    {1, 0, 1, 1, 1, 0, 1, 0, 1, 1},
+    {1, 0, 0, 0, 1, 0, 0, 0, 0, 1},
+    {1, 1, 1, 0, 1, 1, 1, 1, 0, 1},
+    {1, 0, 0, 0, 0, 0, 0, 1, 0, 1},
+    {1, 0, 1, 1, 1, 1, 0, 1, 2, 1}, // Финиш в правом верхнем углу
+    {1, 1, 1, 1, 1, 1, 1, 1, 1, 1}
+};
+
+// Функция для проверки столкновения с стеной
+bool checkCollision(SDL_Rect playerRect) {
+    // Получаем все четыре угла персонажа
+    int left = playerRect.x;
+    int right = playerRect.x + playerRect.w - 1;
+    int top = playerRect.y;
+    int bottom = playerRect.y + playerRect.h - 1;
+
+    // Преобразуем координаты углов в индексы клеток
+    int gridX1 = left / CELL_SIZE;
+    int gridY1 = top / CELL_SIZE;
+
+    int gridX2 = right / CELL_SIZE;
+    int gridY2 = top / CELL_SIZE;
+
+    int gridX3 = left / CELL_SIZE;
+    int gridY3 = bottom / CELL_SIZE;
+
+    int gridX4 = right / CELL_SIZE;
+    int gridY4 = bottom / CELL_SIZE;
+
+    // Проверка выхода за пределы лабиринта
+    if (gridX1 < 0 || gridX1 >= 10 || gridY1 < 0 || gridY1 >= 10 ||
+        gridX2 < 0 || gridX2 >= 10 || gridY2 < 0 || gridY2 >= 10 ||
+        gridX3 < 0 || gridX3 >= 10 || gridY3 < 0 || gridY3 >= 10 ||
+        gridX4 < 0 || gridX4 >= 10 || gridY4 < 0 || gridY4 >= 10) {
+        return true; // Выйти за границы
     }
-    return false;
+
+    // Проверка каждого угла на столкновение со стеной
+    if (maze[gridY1][gridX1] == 1 ||
+        maze[gridY2][gridX2] == 1 ||
+        maze[gridY3][gridX3] == 1 ||
+        maze[gridY4][gridX4] == 1) {
+        return true; // Столкновение со стеной
+    }
+
+    return false; // Нет столкновения
 }
 
 int main(int argc, char* argv[]) {
-    // Инициализация SDL
     if (SDL_Init(SDL_INIT_VIDEO) < 0) {
-        std::cout << "Ошибка инициализации SDL: " << SDL_GetError() << std::endl;
+        cout << "Ошибка инициализации SDL: " << SDL_GetError() << endl;
         return -1;
     }
-
-    // Создаем окно
-    SDL_Window* window = SDL_CreateWindow("Простая игра на SDL2",
+    SDL_Window* window = SDL_CreateWindow("Лабиринт с персонажем",
         SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED,
-        800, 600, SDL_WINDOW_SHOWN);
+        SCREEN_WIDTH, SCREEN_HEIGHT, SDL_WINDOW_SHOWN);
     if (!window) {
-        std::cout << "Ошибка создания окна: " << SDL_GetError() << std::endl;
+        cout << "Ошибка создания окна: " << SDL_GetError() << endl;
         SDL_Quit();
         return -1;
     }
-
-    // Создаем рендер
     SDL_Renderer* renderer = SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED);
     if (!renderer) {
-        std::cout << "Ошибка создания рендера: " << SDL_GetError() << std::endl;
+        cout << "Ошибка создания рендера: " << SDL_GetError() << endl;
         SDL_DestroyWindow(window);
         SDL_Quit();
         return -1;
     }
-
-    // Загрузка изображения персонажа
     SDL_Surface* tempSurface = SDL_LoadBMP("character.bmp");
     if (!tempSurface) {
         cout << "Ошибка загрузки изображения: " << SDL_GetError() << endl;
@@ -50,91 +91,70 @@ int main(int argc, char* argv[]) {
     }
     SDL_Texture* characterTexture = SDL_CreateTextureFromSurface(renderer, tempSurface);
     SDL_FreeSurface(tempSurface);
-
-    SDL_Rect characterRect = { 100, 100, 20, 20 }; // Положение и размер персонажа
-    const int speed = 1; // Скорость перемещения
-
-    // Загрузка изображения карты
-    SDL_Surface* mapSurface = SDL_LoadBMP("map.bmp");
-    if (!mapSurface) {
-        cout << "Ошибка загрузки изображения карты: " << SDL_GetError() << endl;
-        SDL_DestroyTexture(characterTexture);
-        SDL_DestroyRenderer(renderer);
-        SDL_DestroyWindow(window);
-        SDL_Quit();
-        return -1;
-    }
-    SDL_Texture* mapTexture = SDL_CreateTextureFromSurface(renderer, mapSurface);
-    SDL_FreeSurface(mapSurface);
-
-    // Основной цикл игры
+    SDL_Rect playerRect = { CELL_SIZE, CELL_SIZE, 56, 56 };
     bool isRunning = true;
     SDL_Event event;
 
     while (isRunning) {
-        // Обрабатываем события
         while (SDL_PollEvent(&event)) {
             if (event.type == SDL_QUIT) {
                 isRunning = false;
             }
         }
-
-        // Получаем состояние клавиатуры
         const Uint8* keystate = SDL_GetKeyboardState(NULL);
-
-        // Сохраняем старое положение персонажа
-        SDL_Rect oldCharacterRect = characterRect;
-
-        // Обрабатываем нажатия клавиш для перемещения персонажа
-        if (keystate[SDL_SCANCODE_W] && characterRect.y > 0) {
-            characterRect.y -= speed;
-            if (checkCollision(characterRect, { 0, 0, 800, 600 })) {
-                characterRect.y = oldCharacterRect.y;  
-                }
-        }
-        if (keystate[SDL_SCANCODE_S] && characterRect.y + characterRect.h < 600) {
-            characterRect.y += speed;
-            if (checkCollision(characterRect, { 0, 0, 800, 600 })) {
-                characterRect.y = oldCharacterRect.y;
+        SDL_Rect oldPosition = playerRect;
+        if (keystate[SDL_SCANCODE_W]) {
+            playerRect.y -= SPEED;
+            if (checkCollision(playerRect)) {
+                playerRect.y += SPEED;
             }
         }
-        if (keystate[SDL_SCANCODE_A] && characterRect.x > 0) {
-            characterRect.x -= speed;
-            if (checkCollision(characterRect, { 0, 0, 800, 600 })) {
-                characterRect.x = oldCharacterRect.x; 
+        if (keystate[SDL_SCANCODE_S]) {
+            playerRect.y += SPEED;
+            if (checkCollision(playerRect)) {
+                playerRect.y -= SPEED;
             }
         }
-        if (keystate[SDL_SCANCODE_D] && characterRect.x + characterRect.w < 800) {
-            characterRect.x += speed;
-            if (checkCollision(characterRect, { 0, 0, 800, 600 })) {
-                characterRect.x = oldCharacterRect.x; 
+        if (keystate[SDL_SCANCODE_A]) {
+            playerRect.x -= SPEED;
+            if (checkCollision(playerRect)) {
+                playerRect.x += SPEED;
             }
         }
- 
-
-        // Проверяем столкновение с картой
-        if (checkCollision(characterRect, { 0, 0, 800, 600 })) {
-            // Если персонаж столкнулся с краем карты, возвращаем его в прежнее положение
-            characterRect = oldCharacterRect;
+        if (keystate[SDL_SCANCODE_D]) {
+            playerRect.x += SPEED;
+            if (checkCollision(playerRect)) {
+                playerRect.x -= SPEED;
+            }
         }
-
-        // Очищаем экран
-        SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255); // Черный фон
+        SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255);
         SDL_RenderClear(renderer);
+        for (int i = 0; i < 10; i++) {
+            for (int j = 0; j < 10; j++) {
+                SDL_Rect cellRect = { j * CELL_SIZE, i * CELL_SIZE, CELL_SIZE, CELL_SIZE };
+                if (maze[i][j] == 1) {
+                    SDL_SetRenderDrawColor(renderer, 255, 255, 255, 255);
+                    SDL_RenderFillRect(renderer, &cellRect);
+                }
+                else if (maze[i][j] == 2) {
+                    SDL_SetRenderDrawColor(renderer, 0, 255, 0, 255); // Зеленый цвет для финиша
+                    SDL_RenderFillRect(renderer, &cellRect);
+                }
+            }
+        }
+        SDL_RenderCopy(renderer, characterTexture, NULL, &playerRect);
 
-        // Отрисовка карты
-        SDL_RenderCopy(renderer, mapTexture, NULL, NULL);
+        // Проверка достижения финиша
+        int gridX = playerRect.x / CELL_SIZE;
+        int gridY = playerRect.y / CELL_SIZE;
+        if (maze[gridY][gridX] == 2) {
+            cout << "Вы победили!" << endl;
+            isRunning = false; // Завершаем игру
+        }
 
-        // Отрисовка персонажа
-        SDL_RenderCopy(renderer, characterTexture, NULL, &characterRect);
-
-        // Обновляем экран
         SDL_RenderPresent(renderer);
     }
-
-    // Очищаем ресурсы
     SDL_DestroyTexture(characterTexture);
-    SDL_DestroyTexture(mapTexture);
     SDL_DestroyRenderer(renderer);
     SDL_DestroyWindow(window);
     SDL_Quit();
