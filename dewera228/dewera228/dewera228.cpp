@@ -7,7 +7,7 @@ const int SCREEN_WIDTH = 640; // Ширина экрана
 const int SCREEN_HEIGHT = 640; // Высота экрана
 const int SPEED = 4; // Скорость персонажа
 
-// Определение лабиринта (1 - стена, 0 - проход, 2 - финиш)
+// Определение лабиринта (1 - стена, 0 - проход, 2 - финиш, 3 - проигрыш)
 int maze[10][10] = {
     {1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
     {1, 0, 0, 0, 1, 0, 0, 0, 0, 1},
@@ -16,10 +16,20 @@ int maze[10][10] = {
     {1, 0, 1, 1, 1, 0, 1, 0, 1, 1},
     {1, 0, 0, 0, 1, 0, 0, 0, 0, 1},
     {1, 1, 1, 0, 1, 1, 1, 1, 0, 1},
-    {1, 0, 0, 0, 0, 0, 0, 1, 0, 1},
-    {1, 0, 1, 1, 1, 1, 0, 1, 2, 1}, // Финиш в правом верхнем углу
+    {1, 0, 0, 0, 0, 3, 1, 1, 0, 1},
+    {1, 0, 1, 1, 1, 1, 1, 1, 2, 1}, // Финиш в правом верхнем углу
     {1, 1, 1, 1, 1, 1, 1, 1, 1, 1}
 };
+//{1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
+//{ 1, 0, 0, 0, 1, 0, 0, 0, 0, 1 },
+//{ 1, 0, 1, 0, 1, 0, 1, 1, 0, 1 },
+//{ 1, 0, 1, 0, 0, 0, 1, 0, 0, 1 },
+//{ 1, 3, 1, 1, 1, 3, 1, 0, 1, 1 },
+//{ 1, 0, 3, 0, 1, 0, 3, 0, 0, 1 },
+//{ 1, 1, 1, 0, 1, 1, 1, 1, 0, 1 },
+//{ 1, 0, 0, 0, 0, 3, 1, 1, 0, 1 },
+//{ 1, 3, 1, 1, 1, 1, 1, 1, 2, 1 }, // игра с ловушкой
+//{ 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 }
 
 // Функция для проверки столкновения с стеной
 bool checkCollision(SDL_Rect playerRect) {
@@ -62,6 +72,7 @@ bool checkCollision(SDL_Rect playerRect) {
 }
 
 int main(int argc, char* argv[]) {
+    setlocale(LC_ALL, "RU");
     if (SDL_Init(SDL_INIT_VIDEO) < 0) {
         cout << "Ошибка инициализации SDL: " << SDL_GetError() << endl;
         return -1;
@@ -127,17 +138,21 @@ int main(int argc, char* argv[]) {
                 playerRect.x -= SPEED;
             }
         }
-        SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255);
+        SDL_SetRenderDrawColor(renderer, 0, 123, 032, 145);
         SDL_RenderClear(renderer);
         for (int i = 0; i < 10; i++) {
             for (int j = 0; j < 10; j++) {
                 SDL_Rect cellRect = { j * CELL_SIZE, i * CELL_SIZE, CELL_SIZE, CELL_SIZE };
                 if (maze[i][j] == 1) {
-                    SDL_SetRenderDrawColor(renderer, 255, 255, 255, 255);
+                    SDL_SetRenderDrawColor(renderer, 255, 120, 034, 213);
                     SDL_RenderFillRect(renderer, &cellRect);
                 }
                 else if (maze[i][j] == 2) {
                     SDL_SetRenderDrawColor(renderer, 0, 255, 0, 255); // Зеленый цвет для финиша
+                    SDL_RenderFillRect(renderer, &cellRect);
+                }
+                else if (maze[i][j] == 3) {
+                    SDL_SetRenderDrawColor(renderer, 255, 0, 0, 255); // Красный цвет для проигрыша
                     SDL_RenderFillRect(renderer, &cellRect);
                 }
             }
@@ -151,7 +166,11 @@ int main(int argc, char* argv[]) {
             cout << "Вы победили!" << endl;
             isRunning = false; // Завершаем игру
         }
-
+        // Проверка достижения проигрыша
+        if (maze[gridY][gridX] == 3) {
+            cout << "Вы проиграли!" << endl;
+            isRunning = false; // Завершаем игру
+        }
         SDL_RenderPresent(renderer);
     }
     SDL_DestroyTexture(characterTexture);
