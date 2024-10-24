@@ -1,2 +1,42 @@
 ﻿  dewera228.cpp
-  dewera228.vcxproj -> C:\Users\Ученик\Documents\GitHub\dewera228\dewera228\x64\Debug\dewera228.exe
+  game.cpp
+  maze.cpp
+C:\Users\Ученик\Documents\GitHub\dewera228\dewera228\dewera228\maze.cpp(5,12): error C2059: синтаксическая ошибка: {
+C:\Users\Ученик\Documents\GitHub\dewera228\dewera228\dewera228\maze.cpp(5,12): error C2143: синтаксическая ошибка: отсутствие ";" перед "{"
+C:\Users\Ученик\Documents\GitHub\dewera228\dewera228\dewera228\maze.cpp(6,36): error C2143: синтаксическая ошибка: отсутствие ";" перед "}"
+C:\Users\Ученик\Documents\GitHub\dewera228\dewera228\dewera228\maze.cpp(6,37): error C2059: синтаксическая ошибка: ,
+C:\Users\Ученик\Documents\GitHub\dewera228\dewera228\dewera228\maze.cpp(7,7): error C2143: синтаксическая ошибка: отсутствие ";" перед "{"
+C:\Users\Ученик\Documents\GitHub\dewera228\dewera228\dewera228\maze.cpp(7,36): error C2143: синтаксическая ошибка: отсутствие ";" перед "}"
+C:\Users\Ученик\Documents\GitHub\dewera228\dewera228\dewera228\maze.cpp(7,37): error C2059: синтаксическая ошибка: ,
+C:\Users\Ученик\Documents\GitHub\dewera228\dewera228\dewera228\maze.cpp(8,7): error C2143: синтаксическая ошибка: отсутствие ";" перед "{"
+C:\Users\Ученик\Documents\GitHub\dewera228\dewera228\dewera228\maze.cpp(8,36): error C2143: синтаксическая ошибка: отсутствие ";" перед "}"
+C:\Users\Ученик\Documents\GitHub\dewera228\dewera228\dewera228\maze.cpp(8,37): error C2059: синтаксическая ошибка: ,
+C:\Users\Ученик\Documents\GitHub\dewera228\dewera228\dewera228\maze.cpp(9,7): error C2143: синтаксическая ошибка: отсутствие ";" перед "{"
+C:\Users\Ученик\Documents\GitHub\dewera228\dewera228\dewera228\maze.cpp(9,36): error C2143: синтаксическая ошибка: отсутствие ";" перед "}"
+C:\Users\Ученик\Documents\GitHub\dewera228\dewera228\dewera228\maze.cpp(9,37): error C2059: синтаксическая ошибка: ,
+C:\Users\Ученик\Documents\GitHub\dewera228\dewera228\dewera228\maze.cpp(10,7): error C2143: синтаксическая ошибка: отсутствие ";" перед "{"
+C:\Users\Ученик\Documents\GitHub\dewera228\dewera228\dewera228\maze.cpp(10,36): error C2143: синтаксическая ошибка: отсутствие ";" перед "}"
+C:\Users\Ученик\Documents\GitHub\dewera228\dewera228\dewera228\maze.cpp(10,37): error C2059: синтаксическая ошибка: ,
+C:\Users\Ученик\Documents\GitHub\dewera228\dewera228\dewera228\maze.cpp(11,7): error C2143: синтаксическая ошибка: отсутствие ";" перед "{"
+C:\Users\Ученик\Documents\GitHub\dewera228\dewera228\dewera228\maze.cpp(11,36): error C2143: синтаксическая ошибка: отсутствие ";" перед "}"
+C:\Users\Ученик\Documents\GitHub\dewera228\dewera228\dewera228\maze.cpp(11,37): error C2059: синтаксическая ошибка: ,
+C:\Users\Ученик\Documents\GitHub\dewera228\dewera228\dewera228\maze.cpp(12,7): error C2143: синтаксическая ошибка: отсутствие ";" перед "{"
+C:\Users\Ученик\Documents\GitHub\dewera228\dewera228\dewera228\maze.cpp(12,36): error C2143: синтаксическая ошибка: отсутствие ";" перед "}"
+C:\Users\Ученик\Documents\GitHub\dewera228\dewera228\dewera228\maze.cpp(12,37): error C2059: синтаксическая ошибка: ,
+C:\Users\Ученик\Documents\GitHub\dewera228\dewera228\dewera228\maze.cpp(13,7): error C2143: синтаксическая ошибка: отсутствие ";" перед "{"
+C:\Users\Ученик\Documents\GitHub\dewera228\dewera228\dewera228\maze.cpp(13,36): error C2143: синтаксическая ошибка: отсутствие ";" перед "}"
+C:\Users\Ученик\Documents\GitHub\dewera228\dewera228\dewera228\maze.cpp(13,37): error C2059: синтаксическая ошибка: ,
+C:\Users\Ученик\Documents\GitHub\dewera228\dewera228\dewera228\maze.cpp(14,7): error C2143: синтаксическая ошибка: отсутствие ";" перед "{"
+C:\Users\Ученик\Documents\GitHub\dewera228\dewera228\dewera228\maze.cpp(14,36): error C2143: синтаксическая ошибка: отсутствие ";" перед "}"
+C:\Users\Ученик\Documents\GitHub\dewera228\dewera228\dewera228\maze.cpp(14,37): error C2059: синтаксическая ошибка: ,
+C:\Users\Ученик\Documents\GitHub\dewera228\dewera228\dewera228\maze.cpp(15,7): error C2143: синтаксическая ошибка: отсутствие ";" перед "{"
+C:\Users\Ученик\Documents\GitHub\dewera228\dewera228\dewera228\maze.cpp(15,36): error C2143: синтаксическая ошибка: отсутствие ";" перед "}"
+C:\Users\Ученик\Documents\GitHub\dewera228\dewera228\dewera228\maze.cpp(20,12): error C2275: "maze": ожидается выражение вместо типа
+C:\Users\Ученик\Documents\GitHub\dewera228\dewera228\dewera228\maze.cpp(24,12): error C2275: "maze": ожидается выражение вместо типа
+C:\Users\Ученик\Documents\GitHub\dewera228\dewera228\dewera228\maze.cpp(35,21): error C2059: синтаксическая ошибка: [
+C:\Users\Ученик\Documents\GitHub\dewera228\dewera228\dewera228\maze.cpp(35,34): error C2143: синтаксическая ошибка: отсутствие ";" перед "{"
+C:\Users\Ученик\Documents\GitHub\dewera228\dewera228\dewera228\maze.cpp(39,13): error C2181: недопустимый else без парного if
+C:\Users\Ученик\Documents\GitHub\dewera228\dewera228\dewera228\maze.cpp(39,26): error C2059: синтаксическая ошибка: [
+C:\Users\Ученик\Documents\GitHub\dewera228\dewera228\dewera228\maze.cpp(39,39): error C2143: синтаксическая ошибка: отсутствие ";" перед "{"
+  player.cpp
+  Создание кода...

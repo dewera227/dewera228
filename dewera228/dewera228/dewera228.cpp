@@ -16,7 +16,7 @@ int maze[10][10] = {
     {1, 0, 1, 1, 1, 0, 1, 0, 1, 1},
     {1, 0, 0, 0, 1, 0, 0, 0, 0, 1},
     {1, 1, 1, 0, 1, 1, 1, 1, 0, 1},
-    {1, 0, 0, 0, 0, 3, 1, 1, 0, 1},
+    {1, 0, 0, 0, 0, 0, 1, 1, 0, 1},
     {1, 0, 1, 1, 1, 1, 1, 1, 2, 1}, // Финиш в правом верхнем углу
     {1, 1, 1, 1, 1, 1, 1, 1, 1, 1}
 };
@@ -151,10 +151,10 @@ int main(int argc, char* argv[]) {
                     SDL_SetRenderDrawColor(renderer, 0, 255, 0, 255); // Зеленый цвет для финиша
                     SDL_RenderFillRect(renderer, &cellRect);
                 }
-                else if (maze[i][j] == 3) {
-                    SDL_SetRenderDrawColor(renderer, 255, 0, 0, 255); // Красный цвет для проигрыша
-                    SDL_RenderFillRect(renderer, &cellRect);
-                }
+                //else if (maze[i][j] == 3) {
+                    //SDL_SetRenderDrawColor(renderer, 255, 0, 0, 255); // Красный цвет для проигрыша
+                    //SDL_RenderFillRect(renderer, &cellRect);
+                //}
             }
         }
         SDL_RenderCopy(renderer, characterTexture, NULL, &playerRect);
@@ -167,10 +167,10 @@ int main(int argc, char* argv[]) {
             isRunning = false; // Завершаем игру
         }
         // Проверка достижения проигрыша
-        if (maze[gridY][gridX] == 3) {
-            cout << "Вы проиграли!" << endl;
-            isRunning = false; // Завершаем игру
-        }
+        //if (maze[gridY][gridX] == 3) {
+          //cout << "Вы проиграли!" << endl;
+          //isRunning = false; // Завершаем игру
+      //}
         SDL_RenderPresent(renderer);
     }
     SDL_DestroyTexture(characterTexture);
