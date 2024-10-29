@@ -130,7 +130,7 @@
     <ClCompile Include="dewera228.cpp" />
     <ClCompile Include="game.cpp" />
     <ClCompile Include="maze.cpp" />
-    <ClCompile Include="player.cpp" />
+    <ClCompile Include="Person.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -138,7 +138,7 @@
   <ItemGroup>
     <ClInclude Include="game.h" />
     <ClInclude Include="maze.h" />
-    <ClInclude Include="player.h" />
+    <ClInclude Include="Person.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

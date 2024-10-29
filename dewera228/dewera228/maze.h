@@ -1,14 +1,16 @@
 #pragma once
-#include <SDL.H>
+#include <SDL.h>
 #include <vector>
+
 using namespace std;
-class maze {
+
+class Maze {
 private:
-	vector<vector<int>> Maze;
+	vector<vector<int>> maze;
+
 public:
-	maze();
+	Maze();
 	bool isWall(int x, int y);
 	bool isExit(int x, int y);
-	void draw(SDL_Renderer* renderer);
+	void draw(SDL_Renderer* render);
 };
-

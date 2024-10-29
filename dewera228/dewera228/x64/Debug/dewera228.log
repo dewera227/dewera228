@@ -1,42 +1,106 @@
-﻿  dewera228.cpp
-  game.cpp
+﻿  game.cpp
+C:\Users\Ученик\Documents\GitHub\dewera228\dewera228\dewera228\game.cpp(9,1): error C2512: Maze: нет подходящего конструктора по умолчанию
+  C:\Users\Ученик\Documents\GitHub\dewera228\dewera228\dewera228\Maze.h(9,7):
+   см. объявление "Maze"
+  
+C:\Users\Ученик\Documents\GitHub\dewera228\dewera228\dewera228\game.cpp(9,1): error C2512: Person: нет подходящего конструктора по умолчанию
+  C:\Users\Ученик\Documents\GitHub\dewera228\dewera228\dewera228\Person.h(1,7):
+   см. объявление "Person"
+  
+C:\Users\Ученик\Documents\GitHub\dewera228\dewera228\dewera228\game.cpp(28,9): error C2065: SCREEN_WIDTH: необъявленный идентификатор
+C:\Users\Ученик\Documents\GitHub\dewera228\dewera228\dewera228\game.cpp(28,23): error C2065: SCREEN_HEIGHT: необъявленный идентификатор
   maze.cpp
-C:\Users\Ученик\Documents\GitHub\dewera228\dewera228\dewera228\maze.cpp(5,12): error C2059: синтаксическая ошибка: {
-C:\Users\Ученик\Documents\GitHub\dewera228\dewera228\dewera228\maze.cpp(5,12): error C2143: синтаксическая ошибка: отсутствие ";" перед "{"
-C:\Users\Ученик\Documents\GitHub\dewera228\dewera228\dewera228\maze.cpp(6,36): error C2143: синтаксическая ошибка: отсутствие ";" перед "}"
-C:\Users\Ученик\Documents\GitHub\dewera228\dewera228\dewera228\maze.cpp(6,37): error C2059: синтаксическая ошибка: ,
-C:\Users\Ученик\Documents\GitHub\dewera228\dewera228\dewera228\maze.cpp(7,7): error C2143: синтаксическая ошибка: отсутствие ";" перед "{"
-C:\Users\Ученик\Documents\GitHub\dewera228\dewera228\dewera228\maze.cpp(7,36): error C2143: синтаксическая ошибка: отсутствие ";" перед "}"
-C:\Users\Ученик\Documents\GitHub\dewera228\dewera228\dewera228\maze.cpp(7,37): error C2059: синтаксическая ошибка: ,
-C:\Users\Ученик\Documents\GitHub\dewera228\dewera228\dewera228\maze.cpp(8,7): error C2143: синтаксическая ошибка: отсутствие ";" перед "{"
-C:\Users\Ученик\Documents\GitHub\dewera228\dewera228\dewera228\maze.cpp(8,36): error C2143: синтаксическая ошибка: отсутствие ";" перед "}"
-C:\Users\Ученик\Documents\GitHub\dewera228\dewera228\dewera228\maze.cpp(8,37): error C2059: синтаксическая ошибка: ,
-C:\Users\Ученик\Documents\GitHub\dewera228\dewera228\dewera228\maze.cpp(9,7): error C2143: синтаксическая ошибка: отсутствие ";" перед "{"
-C:\Users\Ученик\Documents\GitHub\dewera228\dewera228\dewera228\maze.cpp(9,36): error C2143: синтаксическая ошибка: отсутствие ";" перед "}"
-C:\Users\Ученик\Documents\GitHub\dewera228\dewera228\dewera228\maze.cpp(9,37): error C2059: синтаксическая ошибка: ,
-C:\Users\Ученик\Documents\GitHub\dewera228\dewera228\dewera228\maze.cpp(10,7): error C2143: синтаксическая ошибка: отсутствие ";" перед "{"
-C:\Users\Ученик\Documents\GitHub\dewera228\dewera228\dewera228\maze.cpp(10,36): error C2143: синтаксическая ошибка: отсутствие ";" перед "}"
-C:\Users\Ученик\Documents\GitHub\dewera228\dewera228\dewera228\maze.cpp(10,37): error C2059: синтаксическая ошибка: ,
-C:\Users\Ученик\Documents\GitHub\dewera228\dewera228\dewera228\maze.cpp(11,7): error C2143: синтаксическая ошибка: отсутствие ";" перед "{"
-C:\Users\Ученик\Documents\GitHub\dewera228\dewera228\dewera228\maze.cpp(11,36): error C2143: синтаксическая ошибка: отсутствие ";" перед "}"
-C:\Users\Ученик\Documents\GitHub\dewera228\dewera228\dewera228\maze.cpp(11,37): error C2059: синтаксическая ошибка: ,
-C:\Users\Ученик\Documents\GitHub\dewera228\dewera228\dewera228\maze.cpp(12,7): error C2143: синтаксическая ошибка: отсутствие ";" перед "{"
-C:\Users\Ученик\Documents\GitHub\dewera228\dewera228\dewera228\maze.cpp(12,36): error C2143: синтаксическая ошибка: отсутствие ";" перед "}"
-C:\Users\Ученик\Documents\GitHub\dewera228\dewera228\dewera228\maze.cpp(12,37): error C2059: синтаксическая ошибка: ,
-C:\Users\Ученик\Documents\GitHub\dewera228\dewera228\dewera228\maze.cpp(13,7): error C2143: синтаксическая ошибка: отсутствие ";" перед "{"
-C:\Users\Ученик\Documents\GitHub\dewera228\dewera228\dewera228\maze.cpp(13,36): error C2143: синтаксическая ошибка: отсутствие ";" перед "}"
-C:\Users\Ученик\Documents\GitHub\dewera228\dewera228\dewera228\maze.cpp(13,37): error C2059: синтаксическая ошибка: ,
-C:\Users\Ученик\Documents\GitHub\dewera228\dewera228\dewera228\maze.cpp(14,7): error C2143: синтаксическая ошибка: отсутствие ";" перед "{"
-C:\Users\Ученик\Documents\GitHub\dewera228\dewera228\dewera228\maze.cpp(14,36): error C2143: синтаксическая ошибка: отсутствие ";" перед "}"
-C:\Users\Ученик\Documents\GitHub\dewera228\dewera228\dewera228\maze.cpp(14,37): error C2059: синтаксическая ошибка: ,
-C:\Users\Ученик\Documents\GitHub\dewera228\dewera228\dewera228\maze.cpp(15,7): error C2143: синтаксическая ошибка: отсутствие ";" перед "{"
-C:\Users\Ученик\Documents\GitHub\dewera228\dewera228\dewera228\maze.cpp(15,36): error C2143: синтаксическая ошибка: отсутствие ";" перед "}"
-C:\Users\Ученик\Documents\GitHub\dewera228\dewera228\dewera228\maze.cpp(20,12): error C2275: "maze": ожидается выражение вместо типа
-C:\Users\Ученик\Documents\GitHub\dewera228\dewera228\dewera228\maze.cpp(24,12): error C2275: "maze": ожидается выражение вместо типа
-C:\Users\Ученик\Documents\GitHub\dewera228\dewera228\dewera228\maze.cpp(35,21): error C2059: синтаксическая ошибка: [
-C:\Users\Ученик\Documents\GitHub\dewera228\dewera228\dewera228\maze.cpp(35,34): error C2143: синтаксическая ошибка: отсутствие ";" перед "{"
-C:\Users\Ученик\Documents\GitHub\dewera228\dewera228\dewera228\maze.cpp(39,13): error C2181: недопустимый else без парного if
-C:\Users\Ученик\Documents\GitHub\dewera228\dewera228\dewera228\maze.cpp(39,26): error C2059: синтаксическая ошибка: [
-C:\Users\Ученик\Documents\GitHub\dewera228\dewera228\dewera228\maze.cpp(39,39): error C2143: синтаксическая ошибка: отсутствие ";" перед "{"
-  player.cpp
+  Person.cpp
+C:\Users\Ученик\Documents\GitHub\dewera228\dewera228\dewera228\Person.h(3,12): error C2061: синтаксическая ошибка: идентификатор "SDL_Renderer"
+  (компиляция исходного файла "Person.cpp")
+  
+C:\Users\Ученик\Documents\GitHub\dewera228\dewera228\dewera228\Person.h(4,33): error C4430: отсутствует спецификатор типа - предполагается int. Примечание. C++ не поддерживает int по умолчанию
+  (компиляция исходного файла "Person.cpp")
+  
+C:\Users\Ученик\Documents\GitHub\dewera228\dewera228\dewera228\Person.h(4,33): error C2143: синтаксическая ошибка: отсутствие "," перед "*"
+  (компиляция исходного файла "Person.cpp")
+  
+C:\Users\Ученик\Documents\GitHub\dewera228\dewera228\dewera228\Person.h(7,14): error C3646: getRect: неизвестный спецификатор переопределения
+  (компиляция исходного файла "Person.cpp")
+  
+C:\Users\Ученик\Documents\GitHub\dewera228\dewera228\dewera228\Person.h(7,21): error C2059: синтаксическая ошибка: (
+  (компиляция исходного файла "Person.cpp")
+  
+C:\Users\Ученик\Documents\GitHub\dewera228\dewera228\dewera228\Person.h(7,29): error C2238: непредвиденные лексемы перед ";"
+  (компиляция исходного файла "Person.cpp")
+  
+C:\Users\Ученик\Documents\GitHub\dewera228\dewera228\dewera228\Person.h(10,17): error C2143: синтаксическая ошибка: отсутствие ";" перед "*"
+  (компиляция исходного файла "Person.cpp")
+  
+C:\Users\Ученик\Documents\GitHub\dewera228\dewera228\dewera228\Person.h(10,17): error C4430: отсутствует спецификатор типа - предполагается int. Примечание. C++ не поддерживает int по умолчанию
+  (компиляция исходного файла "Person.cpp")
+  
+C:\Users\Ученик\Documents\GitHub\dewera228\dewera228\dewera228\Person.h(10,27): error C2238: непредвиденные лексемы перед ";"
+  (компиляция исходного файла "Person.cpp")
+  
+C:\Users\Ученик\Documents\GitHub\dewera228\dewera228\dewera228\Person.h(11,16): error C2143: синтаксическая ошибка: отсутствие ";" перед "*"
+  (компиляция исходного файла "Person.cpp")
+  
+C:\Users\Ученик\Documents\GitHub\dewera228\dewera228\dewera228\Person.h(11,16): error C4430: отсутствует спецификатор типа - предполагается int. Примечание. C++ не поддерживает int по умолчанию
+  (компиляция исходного файла "Person.cpp")
+  
+C:\Users\Ученик\Documents\GitHub\dewera228\dewera228\dewera228\Person.h(11,34): error C2238: непредвиденные лексемы перед ";"
+  (компиляция исходного файла "Person.cpp")
+  
+C:\Users\Ученик\Documents\GitHub\dewera228\dewera228\dewera228\Person.h(12,14): error C3646: playerRect: неизвестный спецификатор переопределения
+  (компиляция исходного файла "Person.cpp")
+  
+C:\Users\Ученик\Documents\GitHub\dewera228\dewera228\dewera228\Person.h(12,24): error C4430: отсутствует спецификатор типа - предполагается int. Примечание. C++ не поддерживает int по умолчанию
+  (компиляция исходного файла "Person.cpp")
+  
+C:\Users\Ученик\Documents\GitHub\dewera228\dewera228\dewera228\Person.h(1,14): error C2011: Person: переопределение типа "class"
+  (компиляция исходного файла "Person.cpp")
+  C:\Users\Ученик\Documents\GitHub\dewera228\dewera228\dewera228\Person.h(1,7):
+   см. объявление "Person"
+  
+C:\Users\Ученик\Documents\GitHub\dewera228\dewera228\dewera228\Game.h(17,12): error C2079: "Game::player" использует не имеющую определения структуру class "Person"
+  (компиляция исходного файла "Person.cpp")
+  
+C:\Users\Ученик\Documents\GitHub\dewera228\dewera228\dewera228\Person.cpp(6,9): error C2027: использование неопределенного типа "Person"
+  C:\Users\Ученик\Documents\GitHub\dewera228\dewera228\dewera228\Person.h(1,7):
+   см. объявление "Person"
+  
+C:\Users\Ученик\Documents\GitHub\dewera228\dewera228\dewera228\Person.cpp(6,40): error C4430: отсутствует спецификатор типа - предполагается int. Примечание. C++ не поддерживает int по умолчанию
+C:\Users\Ученик\Documents\GitHub\dewera228\dewera228\dewera228\Person.cpp(11,1): error C2550: {ctor}: список инициализации конструктора должен использоваться только в месте определения конструктора
+C:\Users\Ученик\Documents\GitHub\dewera228\dewera228\dewera228\Person.cpp(12,5): error C3861: loadTexture: идентификатор не найден
+C:\Users\Ученик\Documents\GitHub\dewera228\dewera228\dewera228\Person.cpp(13,1): warning C4508: {ctor}: функция должна возвращать значение; предполагается возвращаемый тип "void"
+C:\Users\Ученик\Documents\GitHub\dewera228\dewera228\dewera228\Person.cpp(15,14): error C2027: использование неопределенного типа "Person"
+  C:\Users\Ученик\Documents\GitHub\dewera228\dewera228\dewera228\Person.h(1,7):
+   см. объявление "Person"
+  
+C:\Users\Ученик\Documents\GitHub\dewera228\dewera228\dewera228\Person.cpp(21,9): error C2065: characterTexture: необъявленный идентификатор
+C:\Users\Ученик\Documents\GitHub\dewera228\dewera228\dewera228\Person.cpp(21,57): error C2065: renderer: необъявленный идентификатор
+C:\Users\Ученик\Documents\GitHub\dewera228\dewera228\dewera228\Person.cpp(26,14): error C2027: использование неопределенного типа "Person"
+  C:\Users\Ученик\Documents\GitHub\dewera228\dewera228\dewera228\Person.h(1,7):
+   см. объявление "Person"
+  
+C:\Users\Ученик\Documents\GitHub\dewera228\dewera228\dewera228\Person.cpp(28,9): error C2065: playerRect: необъявленный идентификатор
+C:\Users\Ученик\Documents\GitHub\dewera228\dewera228\dewera228\Person.cpp(28,25): error C2065: speed: необъявленный идентификатор
+C:\Users\Ученик\Documents\GitHub\dewera228\dewera228\dewera228\Person.cpp(31,9): error C2065: playerRect: необъявленный идентификатор
+C:\Users\Ученик\Documents\GitHub\dewera228\dewera228\dewera228\Person.cpp(31,25): error C2065: speed: необъявленный идентификатор
+C:\Users\Ученик\Documents\GitHub\dewera228\dewera228\dewera228\Person.cpp(34,9): error C2065: playerRect: необъявленный идентификатор
+C:\Users\Ученик\Documents\GitHub\dewera228\dewera228\dewera228\Person.cpp(34,25): error C2065: speed: необъявленный идентификатор
+C:\Users\Ученик\Documents\GitHub\dewera228\dewera228\dewera228\Person.cpp(37,9): error C2065: playerRect: необъявленный идентификатор
+C:\Users\Ученик\Documents\GitHub\dewera228\dewera228\dewera228\Person.cpp(37,25): error C2065: speed: необъявленный идентификатор
+C:\Users\Ученик\Documents\GitHub\dewera228\dewera228\dewera228\Person.cpp(41,14): error C2027: использование неопределенного типа "Person"
+  C:\Users\Ученик\Documents\GitHub\dewera228\dewera228\dewera228\Person.h(1,7):
+   см. объявление "Person"
+  
+C:\Users\Ученик\Documents\GitHub\dewera228\dewera228\dewera228\Person.cpp(45,14): error C2027: использование неопределенного типа "Person"
+  C:\Users\Ученик\Documents\GitHub\dewera228\dewera228\dewera228\Person.h(1,7):
+   см. объявление "Person"
+  
+C:\Users\Ученик\Documents\GitHub\dewera228\dewera228\dewera228\Person.cpp(46,20): error C2065: renderer: необъявленный идентификатор
+C:\Users\Ученик\Documents\GitHub\dewera228\dewera228\dewera228\Person.cpp(46,30): error C2065: characterTexture: необъявленный идентификатор
+C:\Users\Ученик\Documents\GitHub\dewera228\dewera228\dewera228\Person.cpp(46,55): error C2065: playerRect: необъявленный идентификатор
+C:\Users\Ученик\Documents\GitHub\dewera228\dewera228\dewera228\Person.cpp(49,18): error C2027: использование неопределенного типа "Person"
+  C:\Users\Ученик\Documents\GitHub\dewera228\dewera228\dewera228\Person.h(1,7):
+   см. объявление "Person"
+  
+C:\Users\Ученик\Documents\GitHub\dewera228\dewera228\dewera228\Person.cpp(49,18): error C2270: getRect: модификаторы недопустимы для функций, не являющихся членами
   Создание кода...
