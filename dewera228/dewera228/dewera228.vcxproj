@@ -128,9 +128,17 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="dewera228.cpp" />
+    <ClCompile Include="game.cpp" />
+    <ClCompile Include="maze.cpp" />
+    <ClCompile Include="Person.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="game.h" />
+    <ClInclude Include="maze.h" />
+    <ClInclude Include="Person.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
