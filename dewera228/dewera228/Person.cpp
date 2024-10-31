@@ -1,36 +1,37 @@
 #include "Person.h"
-#include "maze.h"
-#include "game.h"
+#include <iostream>
 
-Person::person(int startX, int startY, Maze* m) {
-    Player::rect = { startX, startY, 64, 64 };
-    Maze::maze = m;
+Player::Player(int x, int y, Maze* maze, SDL_Renderer* renderer)
+    : maze(maze), renderer(renderer) {
+    rect = { x, y, CELL_SIZE, CELL_SIZE };
+
+    // Загрузка текстуры
+    SDL_Surface* tempSurface = SDL_LoadBMP("character.bmp");
+    if (!tempSurface) {
+        std::cerr << "Ошибка загрузки изображения: " << SDL_GetError() << std::endl;
+    }
+    else {
+        texture = SDL_CreateTextureFromSurface(renderer, tempSurface);
+        SDL_FreeSurface(tempSurface);
+    }
 }
 
-void Player::Person(int startX, int startY, Maze* m)
-{
-}
-
-void Player::move(int dx, int dy) {
+void Player::handleInput(const Uint8* state) {
     SDL_Rect newRect = rect;
-    newRect.x += dx * 4;
-    newRect.y += dy * 4;
+    if (state[SDL_SCANCODE_UP]) newRect.y -= SPEED;
+    if (state[SDL_SCANCODE_DOWN]) newRect.y += SPEED;
+    if (state[SDL_SCANCODE_LEFT]) newRect.x -= SPEED;
+    if (state[SDL_SCANCODE_RIGHT]) newRect.x += SPEED;
 
-    int gridX = newRect.x / 64;
-    int gridY = newRect.y / 64;
-
-    if (!maze->isWall(gridX, gridY)) {
+    if (!maze->checkCollision(newRect)) {
         rect = newRect;
     }
 }
 
-bool Player::hasReachedExit() {
-    int gridX = rect.x / 64;
-    int gridY = rect.y / 64;
-    return maze->isExit(gridX, gridY);
+void Player::draw(SDL_Renderer* renderer) {
+    SDL_RenderCopy(renderer, texture, NULL, &rect);
 }
 
-void Player::draw(SDL_Renderer* renderer) {
-    SDL_SetRenderDrawColor(renderer, 255, 0, 0, 255);
-    SDL_RenderFillRect(renderer, &rect);
+bool Player::hasReachedExit() {
+    return maze->reachedExit(rect);
 }

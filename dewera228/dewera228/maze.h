@@ -1,16 +1,30 @@
-#pragma once
-#include <SDL.h>
-#include <vector>
+#ifndef MAZE_H
+#define MAZE_H
 
-using namespace std;
+#include <SDL.h>
+
+const int CELL_SIZE = 64;
 
 class Maze {
-private:
-	vector<vector<int>> maze;
-
 public:
-	Maze();
-	bool isWall(int x, int y);
-	bool isExit(int x, int y);
-	void draw(SDL_Renderer* render);
+    Maze();
+    void draw(SDL_Renderer* renderer);
+    bool checkCollision(SDL_Rect playerRect);
+    bool reachedExit(SDL_Rect playerRect);
+
+private:
+    int maze[10][10] = {
+        {1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
+        {1, 0, 0, 0, 1, 0, 0, 0, 0, 1},
+        {1, 0, 1, 0, 1, 0, 1, 1, 0, 1},
+        {1, 0, 1, 0, 0, 0, 1, 0, 0, 1},
+        {1, 0, 1, 1, 1, 0, 1, 0, 1, 1},
+        {1, 0, 0, 0, 1, 0, 0, 0, 0, 1},
+        {1, 1, 1, 0, 1, 1, 1, 1, 0, 1},
+        {1, 0, 0, 0, 0, 0, 0, 1, 0, 1},
+        {1, 0, 1, 1, 1, 1, 0, 1, 0, 2},
+        {1, 1, 1, 1, 1, 1, 1, 1, 1, 1}
+    };
 };
+
+#endif // MAZE_H
